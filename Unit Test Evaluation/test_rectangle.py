@@ -6,7 +6,11 @@ class Rectangle:
         self.height = height
 
     def get_area(self):
-        return self.width * self.height
+        area = self.width * self.height
+        if area >= 0:
+            return area
+        else:
+            return "Error"
 
     def set_width(self, width):
         self.width = width
@@ -21,6 +25,11 @@ def test_normal_case():
     assert rectangle.get_area() == 6, "Incorrect Area."
 
 
+def test_zero_case():
+    rectangle = Rectangle(0, 0)
+    assert rectangle.get_area() == 0, 'Zero Value'
+
+
 def test_negative_case():
     rectangle = Rectangle(2, -3)
-    assert rectangle.get_area() == -6, "Error Negative Values"
+    assert rectangle.get_area() == "Error", "Error Negative Values"
